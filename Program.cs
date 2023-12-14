@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ARSA;
 
-Console.WriteLine("Hello, World!");
-Console.WriteLine(webScraper.getWebPage("https://old.reddit.com").Result);
+
+string webdata = webScraper.getWebPage("https://old.reddit.com/r/AITAH").Result;
+List<string> test = webScraper.getTopPostLinks(webdata).Result;

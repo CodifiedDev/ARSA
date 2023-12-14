@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,28 @@ namespace ARSA
             string jsonResponse = await response.Content.ReadAsStringAsync();
             //This is unparsed data, It will not be readable
             return jsonResponse;
+        }
+        public async static Task<List<string>> getTopPostLinks(string htmlDATA)
+        {
+            //htmlDATA will be unparsed data, preferably taken from getWebPage, It is assumed that the data is coming from a https://old.reddit.com/r/subreddit
+            var doc = new HtmlDocument();
+            doc.LoadHtml(htmlDATA);
+            //HtmlAgilityPack then needs to find all p tags with the class title
+            IEnumerable<HtmlNode> nodes = doc.DocumentNode.Descendants("a").Where(node => node.HasClass("title"));
+            //Before all items are looped through a list is created to store all the links
+           List<string> links = new List<string>();
+            foreach (HtmlNode node in nodes)
+            {
+                //HtmlAgilityPack is used again to get the href elements of of the anchors
+                string link = node.GetAttributeValue("href", "");
+                //All advertising links must be removed, this is done by ignoring all links that contain 'https://', this is because all advertising links are external
+                if (!link.Contains("https://"))
+                {
+                    //ALL Links are added to the list, this will be trucanted to the desired amount when deciding to parse the data, not at this stage.
+                    links.Add(link);
+                }
+            }
+            return links;
         }
     }
 }
