@@ -16,6 +16,7 @@ List<string> test = webScraper.getTopPostLinks("https://old.reddit.com/r/AITAH")
 string url = "https://old.reddit.com" + test[1];
 var contnet = webScraper.getPostContent(url).Result;
 string fullscript = contnet[0] + @" \ " + contnet[1];
+srtGenerator.generateSRT(fullscript);
 textToSpeech.generateTTSFile(fullscript);
-videoCreation.createVideo();
+videoCreation.createVideo(); 
 //Directory.Delete(Directory.GetCurrentDirectory() + "/tmp", true);
