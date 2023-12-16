@@ -1,22 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using ARSA;
 
-Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/tmp");
-/*List<string> test = webScraper.getTopPostLinks("https://old.reddit.com/r/AITAH").Result;
-for (int i = 0; i < 1; i++)
-{
-    string url = "https://old.reddit.com" + test[1];
-    var contnet = webScraper.getPostContent(url).Result;
-    foreach (var contents in contnet)
-    {
-        Console.WriteLine(contents);
-    }
-} */
-List<string> test = webScraper.getTopPostLinks("https://old.reddit.com/r/AITAH").Result;
-string url = "https://old.reddit.com" + test[1];
-var contnet = webScraper.getPostContent(url).Result;
-string fullscript = contnet[0] + @" \ " + contnet[1];
-srtGenerator.generateSRT(fullscript);
-textToSpeech.generateTTSFile(fullscript);
-videoCreation.createVideo(); 
-//Directory.Delete(Directory.GetCurrentDirectory() + "/tmp", true);
+//This is the main entrance point for the script, however it runs the actual main function in fullStackRun.cs, This may not be best practice.
+Console.WriteLine("Welcome to ARSA");
+Console.WriteLine("Please enter the subreddit you wish to use");
+string subreddit = Console.ReadLine();
+Console.WriteLine("Please enter the path to the input file");
+string inputPath = Console.ReadLine();
+Console.WriteLine("Please enter the path to the output file");
+string outputPath = Console.ReadLine();
+Console.WriteLine("Please enter the number of videos you wish to create");
+int numberofVideos = Convert.ToInt32(Console.ReadLine());
+fullStackRun.Main(subreddit, inputPath, outputPath, numberofVideos);
