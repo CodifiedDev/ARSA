@@ -47,7 +47,7 @@ namespace ARSA
             return (List<string>)links;
         }
 
-        public async static Task<(string, string)> getPostContent(string url)
+        public async static Task<(string Title, string Body)> getPostContent(string url)
         {
             //This must ALWAYS only return a 2 value long List, with the first element being the title of the post, and the second being the body of text
             //This assumes that the url has already been concecrated with the predeterminer of old.reddit.com, as this does not appear in the getTopPostLinks method

@@ -29,7 +29,7 @@ namespace ARSA
             {
                 string url = "https://old.reddit.com" + test[i];
                 var content = webScraper.getPostContent(url).Result;
-                string fullscript = content.Item1 + @" \ " + content.Item2;
+                string fullscript = content.Title + @" \ " + content.Body;
                 srtGenerator.generateSRT(fullscript);
                 await textToSpeech.generateTTSFile(fullscript, i);
                 videoCreation.createVideo(inputPath, outputPath, i);
