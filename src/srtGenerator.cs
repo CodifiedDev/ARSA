@@ -11,7 +11,7 @@ namespace ARSA
 {
     internal class srtGenerator
     {
-        public static async void generateSRT(string script)
+        public static void generateSRT(string script)
         {
             List<string> scriptList = script.Split(@" ").ToList();
             List<SubtitleItem> words = new List<SubtitleItem>();
