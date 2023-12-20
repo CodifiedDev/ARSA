@@ -12,7 +12,7 @@ namespace ARSA
         public static async Task generateTTSFile(string script, int id)
         {
             //Speech Synthesiser needs to be initalised, this may limit the avaliable systems to Windows?
-            SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+            SpeechSynthesizer synthesizer = new();
             //Volume may need to be set to 100, this was established as part of earlier debugging, and it works so I will not change it
             synthesizer.Volume = 100;
             synthesizer.Rate = 2;
