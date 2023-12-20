@@ -14,17 +14,25 @@ namespace ARSA
         public static void generateSRT(string script)
         {
             List<string> scriptList = script.Split(@" ").ToList();
-            List<SubtitleItem> words = new List<SubtitleItem>();
             int currentTime = 0;
-            foreach (string word in scriptList)
+            // List<SubtitleItem> words = new List<SubtitleItem>();
+            // foreach (string word in scriptList)
+            // {
+            //     SubtitleItem subtitle = new SubtitleItem();
+            //     subtitle.StartTime = currentTime;
+            //     currentTime += 275;
+            //     subtitle.EndTime = currentTime;
+            //     subtitle.Lines.Add(word);
+            //     words.Add(subtitle);
+            // }
+
+            var words = scriptList.Select(word => new SubtitleItem
             {
-                SubtitleItem subtitle = new SubtitleItem();
-                subtitle.StartTime = currentTime;
-                currentTime += 275;
-                subtitle.EndTime = currentTime;
-                subtitle.Lines.Add(word);
-                words.Add(subtitle);
-            }
+                StartTime = currentTime,
+                EndTime = currentTime += 275,
+                Lines = new List<string> { word }
+            });
+            
             var writer = new SubtitlesParser.Classes.Writers.SrtWriter();
             using (var fileStream = File.OpenWrite(Directory.GetCurrentDirectory() + @"\tmp\script.srt"))
             {
