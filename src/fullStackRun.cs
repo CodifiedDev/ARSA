@@ -25,7 +25,7 @@ namespace ARSA
             }
             Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/tmp");
             List<string> test = webScraper.getTopPostLinks("https://old.reddit.com/r/" + subreddit).Result;
-            for (int i = 0; i < numberofVideos; i++)
+            for (int i = 1; i < numberofVideos + 1; i++)
             {
                 string url = "https://old.reddit.com" + test[i];
                 var content = webScraper.getPostContent(url).Result;
