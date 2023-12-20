@@ -11,5 +11,8 @@ ARSA should be as easy to run as double clicking the executable after unzipping 
 # Compatability
 At this time ARSA is only compatible with Windows 10 and above
 
+# Contributing
+Please see https://github.com/CodifiedDev/ARSA/blob/master/CONTRIBUTING.md for all information regarding making a contribution
+
 # Notice
 This is for educational purposes **only**. It is potentially a violation of the Reddit TOS
