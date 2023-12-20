@@ -28,8 +28,8 @@ namespace ARSA
             for (int i = 1; i < numberofVideos + 1; i++)
             {
                 string url = "https://old.reddit.com" + test[i];
-                var contnet = webScraper.getPostContent(url).Result;
-                string fullscript = contnet[0] + @" \ " + contnet[1];
+                var content = webScraper.getPostContent(url).Result;
+                string fullscript = content.Item1 + @" \ " + content.Item2;
                 srtGenerator.generateSRT(fullscript);
                 await textToSpeech.generateTTSFile(fullscript, i);
                 videoCreation.createVideo(inputPath, outputPath, i);
